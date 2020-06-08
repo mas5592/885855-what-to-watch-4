@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Мария Самарцева](https://up.htmlacademy.ru/react/4/user/885855).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Белокур](https://htmlacademy.ru/profile/alex-belokur).
 
 ---
 
