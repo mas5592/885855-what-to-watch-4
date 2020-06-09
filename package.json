@@ -19,11 +19,11 @@
     "node": "10"
   },
   "dependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
-    "babel-loader": "^8.1.0",
-    "eslint-plugin-react": "^7.20.0",
-    "webpack": "^4.43.0"
+    "@babel/core": "7.10.2",
+    "@babel/preset-env": "7.10.2",
+    "@babel/preset-react": "7.10.1",
+    "babel-loader": "8.1.0",
+    "eslint-plugin-react": "7.20.0",
+    "webpack": "4.43.0"
   }
 }
