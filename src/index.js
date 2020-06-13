@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-
-const settings = {
-  movieTitle: `The Grand Budapest Hotel`,
-  movieGenre: `Drama`,
-  movieYear: `2014`
-};
+import {FILMS_TITLE, promo} from './data.js';
 
 ReactDOM.render(
     <App
-      movieTitle={settings.movieTitle}
-      movieGenre={settings.movieGenre}
-      movieYear={settings.movieYear}
+      promo = {promo}
+      filmsTitle = {FILMS_TITLE}
     />,
     document.getElementById(`root`)
 );
