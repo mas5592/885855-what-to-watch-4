@@ -16,7 +16,8 @@ const renderFilms = (titles) => {
 const Main = (props) => {
   const {
     promo,
-    filmsTitle
+    filmsTitle,
+    onTitleClickHandler
   } = props;
 
   return <React.Fragment>
@@ -51,7 +52,7 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{promo.title}</h2>
+            <h2 className="movie-card__title" onClick={onTitleClickHandler}>{promo.title}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{promo.genre}</span>
               <span className="movie-card__year">{promo.date}</span>
@@ -146,7 +147,8 @@ Main.propTypes = {
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired
   }),
-  filmsTitle: PropTypes.arrayOf(PropTypes.string).isRequired
+  filmsTitle: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onTitleClickHandler: PropTypes.func.isRequired
 };
 
 export default Main;

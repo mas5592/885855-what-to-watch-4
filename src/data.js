@@ -25,3 +25,5 @@ export const FILMS_TITLE = [
   `Orlando`,
   `Mindhunter`
 ];
+
+export const MOCK_TITLE = `Fantastic Beasts: The Crimes of Grindelwald`;

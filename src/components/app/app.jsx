@@ -3,11 +3,13 @@ import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
 
 const App = (props) => {
+  const filmTitleClickHandler = () => {};
   const {promo, filmsTitle} = props;
 
   return (
     <Main
       promo={promo}
+      onTitleClickHandler={filmTitleClickHandler}
       filmsTitle={filmsTitle}
     />
   );
