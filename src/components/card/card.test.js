@@ -1,15 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Card from './card';
-import {MOCK_TITLE} from '../../data.js';
+import Card from './card.jsx';
+
+const film = {
+  id: 1,
+  title: `Aviator`,
+  src: `aviator.jpg`
+};
 
 it(`Render catalog card`, () => {
   const cardComponent = renderer
     .create(
         <Card
-          title={MOCK_TITLE}
-        />
-    )
+          film={film}
+          filmTitleClickHandler={() => { }}
+          onFilmTitleClick={() => { }}
+          onFilmHover={() => { }}
+        />)
     .toJSON();
 
   expect(cardComponent).toMatchSnapshot();

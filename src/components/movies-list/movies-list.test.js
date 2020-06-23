@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app';
-import {promo} from '../../data.js';
+import MoviesList from './movies-list.jsx';
 
 const films = [
   {
@@ -16,15 +15,17 @@ const films = [
   }
 ];
 
-it(`Render App`, () => {
-  const appComponent = renderer
+
+it(`MoviesList renders correctly`, () => {
+  const tree = renderer
     .create(
-        <App
-          promo={promo}
+        <MoviesList
           films={films}
+          onFilmTitleClick={() => { }}
         />
     )
     .toJSON();
 
-  expect(appComponent).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
+
