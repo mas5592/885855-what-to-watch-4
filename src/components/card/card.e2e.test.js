@@ -15,18 +15,18 @@ Enzyme.configure({
 
 
 it(`Card be hovered`, () => {
-  const onFilmClickHover = jest.fn((args) => args);
+  const onFilmHover = jest.fn((args) => args);
 
   const card = shallow(
       <Card
         film={film}
         onFilmTitleClick={() => { }}
-        onFilmClickHover={onFilmClickHover} />
+        onFilmHover={onFilmHover} />
   );
 
   const cardElement = card.find(`.small-movie-card`);
   cardElement.simulate(`mouseover`, film);
 
-  expect(onFilmClickHover).toHaveBeenCalledTimes(1);
-  expect(onFilmClickHover.mock.calls[0][0]).toMatchObject(film);
+  expect(onFilmHover).toHaveBeenCalledTimes(1);
+  expect(onFilmHover.mock.calls[0][0]).toMatchObject(film);
 });

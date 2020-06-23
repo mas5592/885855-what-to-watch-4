@@ -15,7 +15,7 @@ it(`Render catalog card`, () => {
           film={film}
           filmTitleClickHandler={() => { }}
           onFilmTitleClick={() => { }}
-          onFilmClickHover={() => { }}
+          onFilmHover={() => { }}
         />)
     .toJSON();
 
