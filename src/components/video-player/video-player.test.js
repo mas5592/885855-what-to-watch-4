@@ -1,7 +1,7 @@
 import React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Card from './card.jsx';
+import rerender from 'react-test-renderer';
+
+import VideoPlayer from './video-player.jsx';
 
 const film = {
   id: 1,
@@ -24,41 +24,19 @@ const film = {
   preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
 };
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+it(`Should VideoPlayer render correctly`, () => {
+  const tree = rerender.create(
+      <VideoPlayer
+        isMuted={true}
+        isPlaying={true}
+        poster={film.poster}
+        src={film.preview}
+      />,
+      {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
-it(`Card be hovered`, () => {
-  const hoverHandler = jest.fn();
-  const clickHandler = jest.fn();
-
-  const card = mount(
-      <Card
-        film={film}
-        onFilmHover={hoverHandler}
-        onFilmClick={clickHandler}
-      />
-  );
-
-  card.find(`article.small-movie-card`).simulate(`mouseover`);
-
-  expect(hoverHandler).toHaveBeenCalledTimes(1);
-  expect(hoverHandler.mock.calls[0][0]).toBe(film.id);
-});
-
-it(`Card be clicked`, () => {
-  const hoverHandler = jest.fn();
-  const clickHandler = jest.fn();
-
-  const card = mount(
-      <Card
-        film={film}
-        onFilmHover={hoverHandler}
-        onFilmClick={clickHandler}
-      />
-  );
-
-  card.find(`a.small-movie-card__link`).simulate(`click`);
-
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+  expect(tree).toMatchSnapshot();
 });

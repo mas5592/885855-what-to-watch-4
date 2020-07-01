@@ -1,44 +1,156 @@
-const FILMS_DATA = [
+export default [
   {
     id: 1,
     title: `Aviator`,
-    src: `aviator.jpg`
+    img: `img/aviator.jpg`,
+    release: 2004,
+    genre: `Dramas`,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/5d4dbb46-36e2-4892-a71d-fded5d0fe86d/x1000`,
+    coverBackground: `img/aviator.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
+
   {
     id: 2,
     title: `The Grand Budapest Hotel`,
-    src: `bg-the-grand-budapest-hotel.jpg`
+    img: `img/bg-the-grand-budapest-hotel.jpg`,
+    release: 2014,
+    poster: `img/the-grand-budapest-hotel-poster.jpg`,
+    coverBackground: `img/bg-the-grand-budapest-hotel.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 3,
     title: `Bohemian Rhapsody`,
-    src: `bohemian-rhapsody.jpg`
+    img: `img/bohemian-rhapsody.jpg`,
+    release: 2018,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/a8132729-68c2-4f03-9795-0d886db8ae38/x1000`,
+    coverBackground: `img/bohemian-rhapsody.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 4,
     title: `Dardjeeling Limited`,
-    src: `dardjeeling-limited.jpg`
+    img: `img/dardjeeling-limited.jpg`,
+    release: 2007,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/828a2cea-e6ea-435d-922a-69807a3f89ba/360`,
+    coverBackground: `img/dardjeeling-limited.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 5,
     title: `Fantastic Beasts`,
-    src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`
+    img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    release: 2016,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/a7ff286d-f040-4499-9ace-a09fab68e556/360`,
+    coverBackground: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 6,
     title: `Johnny English`,
-    src: `johnny-english.jpg`
+    img: `img/johnny-english.jpg`,
+    release: 2003,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/e2bd37d3-3635-4625-b280-04f54470a99f/360`,
+    coverBackground: `img/johnny-english.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 7,
     title: `Macbeth`,
-    src: `macbeth.jpg`
+    img: `img/macbeth.jpg`,
+    release: 2015,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/dfd5a6af-e654-4e0e-b989-8972e75f21f1/360`,
+    coverBackground: `img/macbeth.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 8,
     title: `Midnight Special`,
-    src: `midnight-special.jpg`
+    img: `img/midnight-special.jpg`,
+    release: 2016,
+    poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/ab8e3a9f-1f77-41ff-bc85-09dd32fa6639/360`,
+    coverBackground: `img/midnight-special.jpg`,
+    rating: {
+      score: 8.9,
+      level: `Very good`,
+      count: 240
+    },
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+    team: {
+      director: `Wes Andreson`,
+      starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other`
+    },
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
 ];
-
-export default FILMS_DATA;

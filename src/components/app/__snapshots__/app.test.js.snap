@@ -259,26 +259,27 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          id={1}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
-            <img
-              alt="Aviator"
-              height={175}
-              src="img/aviator.jpg"
-              width={280}
+            <video
+              crossOrigin="anonymous"
+              height="175"
+              width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Aviator
             </a>
@@ -286,26 +287,27 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          id={2}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
-            <img
-              alt="The Grand Budapest Hotel"
-              height={175}
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              width={280}
+            <video
+              crossOrigin="anonymous"
+              height="175"
+              width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               The Grand Budapest Hotel
             </a>

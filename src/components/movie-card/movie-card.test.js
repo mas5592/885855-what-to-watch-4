@@ -1,7 +1,7 @@
 import React from 'react';
 import rerender from 'react-test-renderer';
-import App from './app';
-import {promo} from '../../data.js';
+
+import MovieCard from '../movie-card/movie-card.jsx';
 
 const films = [
   {
@@ -45,17 +45,19 @@ const films = [
   },
 ];
 
-it(`Render App`, () => {
-  const appComponent = rerender
-    .create(<App
-      promo={promo}
-      films={films}
-    />, {
-      createNodeMock: () => {
-        return {};
-      }
-    }
+it(`Should MovieCard render correctly`, () => {
+  const tree = rerender
+    .create(
+        <MovieCard
+          film={films[0]}
+          onFilmClick={() => { }}
+          films={films}
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     ).toJSON();
 
-  expect(appComponent).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
