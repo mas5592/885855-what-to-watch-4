@@ -1,32 +1,44 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Card from './card.jsx';
-
-const film = {
-  id: 1,
-  title: `Aviator`,
-  src: `aviator.jpg`
-};
+import {film} from '../../data.js';
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-
 it(`Card be hovered`, () => {
-  const onFilmHover = jest.fn((args) => args);
+  const hoverHandler = jest.fn();
+  const clickHandler = jest.fn();
 
-  const card = shallow(
+  const card = mount(
       <Card
         film={film}
-        onFilmTitleClick={() => { }}
-        onFilmHover={onFilmHover} />
+        onFilmHover={hoverHandler}
+        onFilmClick={clickHandler}
+      />
   );
 
-  const cardElement = card.find(`.small-movie-card`);
-  cardElement.simulate(`mouseover`, film);
+  card.find(`article.small-movie-card`).simulate(`mouseover`);
 
-  expect(onFilmHover).toHaveBeenCalledTimes(1);
-  expect(onFilmHover.mock.calls[0][0]).toMatchObject(film);
+  expect(hoverHandler).toHaveBeenCalledTimes(1);
+  expect(hoverHandler.mock.calls[0][0]).toBe(film.id);
+});
+
+it(`Card be clicked`, () => {
+  const hoverHandler = jest.fn();
+  const clickHandler = jest.fn();
+
+  const card = mount(
+      <Card
+        film={film}
+        onFilmHover={hoverHandler}
+        onFilmClick={clickHandler}
+      />
+  );
+
+  card.find(`a.small-movie-card__link`).simulate(`click`);
+
+  expect(clickHandler).toHaveBeenCalledTimes(1);
 });

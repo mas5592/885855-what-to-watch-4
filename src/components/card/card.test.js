@@ -1,23 +1,20 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import rerender from 'react-test-renderer';
 import Card from './card.jsx';
-
-const film = {
-  id: 1,
-  title: `Aviator`,
-  src: `aviator.jpg`
-};
+import {film} from '../../data.js';
 
 it(`Render catalog card`, () => {
-  const cardComponent = renderer
-    .create(
-        <Card
-          film={film}
-          filmTitleClickHandler={() => { }}
-          onFilmTitleClick={() => { }}
-          onFilmHover={() => { }}
-        />)
-    .toJSON();
+  const cardComponent = rerender
+    .create(<Card
+      film={film}
+      onFilmHover={() => { }}
+      onFilmClick={() => { }}
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    }
+    ).toJSON();
 
   expect(cardComponent).toMatchSnapshot();
 });

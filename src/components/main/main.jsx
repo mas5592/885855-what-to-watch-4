@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 
-const handleTitleClick = () => {};
-
 const Main = (props) => {
   const {
     promo,
-    films
+    films,
+    onFilmClick
   } = props;
+
+  const filmClickHandler = (film) => {
+    onFilmClick(film);
+  };
 
   return <React.Fragment>
     <section className="movie-card">
@@ -97,7 +100,7 @@ const Main = (props) => {
 
         <MoviesList
           films={films}
-          onFilmTitleClick = {handleTitleClick}
+          onFilmClick={filmClickHandler}
         />
 
         <div className="catalog__more">
@@ -130,9 +133,10 @@ Main.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        src: PropTypes.string.isRequired
+        img: PropTypes.string.isRequired
       }).isRequired
-  ).isRequired
+  ).isRequired,
+  onFilmClick: PropTypes.func.isRequired
 };
 
 export default Main;

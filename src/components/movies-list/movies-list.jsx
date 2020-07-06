@@ -3,36 +3,42 @@ import PropTypes from 'prop-types';
 import Card from '../card/card.jsx';
 import {generateId} from '../../utils/utils.js';
 
-export default class MoviesList extends PureComponent {
+class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentFilm: null
+      activeCard: this.props.films[0]
     };
+
+    this.handleCardHover = this.handleCardHover.bind(this);
+    this.filmClick = this.filmClick.bind(this);
   }
 
-  handleCardHover(film) {
+  handleCardHover(id) {
     this.setState({
-      currentFilm: film
+      activeCard: id
     });
   }
 
+  filmClick(film) {
+    this.props.onFilmClick(film);
+  }
+
   render() {
-    const {films, onFilmTitleClick} = this.props;
+    const {films} = this.props;
 
     return (
-      <div className="catalog__movies-list">
-        {films.map((film) => {
-          return (
-            <Card
-              key = {generateId()}
-              film = {film}
-              onFilmTitleClick = {onFilmTitleClick}
-              onFilmHover={this.handleCardHover}
-            />
-          );
-        })}
+      <div
+        className="catalog__movies-list">
+        {films.map((film) => (
+          <Card
+            key={generateId()}
+            film={film}
+            onFilmHover={this.handleCardHover}
+            onFilmClick={this.filmClick}
+          />
+        ))}
       </div>
     );
   }
@@ -43,8 +49,10 @@ MoviesList.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        src: PropTypes.string.isRequired
+        img: PropTypes.string.isRequired,
       })
   ).isRequired,
-  onFilmTitleClick: PropTypes.func.isRequired
+  onFilmClick: PropTypes.func.isRequired
 };
+
+export default MoviesList;
