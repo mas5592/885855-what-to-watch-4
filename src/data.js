@@ -70,3 +70,5 @@ export const film = {
 export const VIDEO_TIMER_HOVER = 1000;
 
 export const SHOWING_FILMS_COUNT = 4;
+
+export const FILTER_ALL_GENRES = `All Genres`;
