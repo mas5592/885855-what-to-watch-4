@@ -1,5 +1,5 @@
 import {reducer, setCurrentGenre} from './reducer.js';
-import films from './mocks/films.js';
+import filmsMock from './mocks/films.js';
 import {FILTER_ALL_GENRES} from './data.js';
 
 const initialState = {
@@ -7,16 +7,15 @@ const initialState = {
   films: [],
 };
 
-
-it(`Reducer without additional parameters should return initial state`, () => {
+it(`Reducer should return to its original state without additional parameters`, () => {
   expect(reducer(void 0, {})).toEqual(initialState);
 });
 
-it(`Action working correctly`, () => {
+it(`currentGenre working correctly`, () => {
   const newInitialState = {
-    currentGenre: films[2].genre,
+    currentGenre: filmsMock[2].genre,
     films: [],
   };
 
-  expect(reducer(initialState, setCurrentGenre(films[2].genre))).toEqual(newInitialState);
+  expect(reducer(initialState, setCurrentGenre(filmsMock[2].genre))).toEqual(newInitialState);
 });

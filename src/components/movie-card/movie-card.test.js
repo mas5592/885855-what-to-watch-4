@@ -9,7 +9,7 @@ it(`Should MovieCard render correctly`, () => {
         <MovieCard
           film={films[0]}
           onFilmClick={() => { }}
-          films={films}
+          relativeFilms={films}
         />, {
           createNodeMock: () => {
             return {};

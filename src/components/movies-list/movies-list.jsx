@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Card from '../card/card.jsx';
-import {generateId} from '../../utils/utils.js';
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -12,7 +11,7 @@ class MoviesList extends PureComponent {
     };
 
     this.handleCardHover = this.handleCardHover.bind(this);
-    this.filmClick = this.filmClick.bind(this);
+    this.handlerFilmClick = this.handlerFilmClick.bind(this);
   }
 
   handleCardHover(id) {
@@ -21,7 +20,7 @@ class MoviesList extends PureComponent {
     });
   }
 
-  filmClick(film) {
+  handlerFilmClick(film) {
     this.props.onFilmClick(film);
   }
 
@@ -33,10 +32,10 @@ class MoviesList extends PureComponent {
         className="catalog__movies-list">
         {films.map((film) => (
           <Card
-            key={generateId()}
+            key={film.id}
             film={film}
-            onFilmHover={this.handleCardHover}
-            onFilmClick={this.filmClick}
+            onMouseOver={this.handleCardHover}
+            onFilmClick={this.handlerFilmClick}
           />
         ))}
       </div>
