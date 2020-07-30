@@ -15,7 +15,7 @@ it(`Card be hovered`, () => {
   const card = mount(
       <Card
         film={film}
-        onFilmHover={hoverHandler}
+        onMouseOver={hoverHandler}
         onFilmClick={clickHandler}
       />
   );
@@ -33,7 +33,7 @@ it(`Card be clicked`, () => {
   const card = mount(
       <Card
         film={film}
-        onFilmHover={hoverHandler}
+        onMouseOver={hoverHandler}
         onFilmClick={clickHandler}
       />
   );

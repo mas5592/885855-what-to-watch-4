@@ -7,7 +7,7 @@ it(`Render catalog card`, () => {
   const cardComponent = rerender
     .create(<Card
       film={film}
-      onFilmHover={() => { }}
+      onMouseOver={() => { }}
       onFilmClick={() => { }}
     />, {
       createNodeMock: () => {

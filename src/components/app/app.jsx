@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import MovieCard from '../movie-card/movie-card.jsx';
 import PropTypes from 'prop-types';
+import {SHOWING_FILMS_COUNT} from '../../data.js';
 
 class App extends PureComponent {
   constructor(props) {
@@ -24,11 +25,12 @@ class App extends PureComponent {
   renderApp() {
     const {promo, films} = this.props;
     const {activeFilm} = this.state;
+    const relativeFilms = films.slice(0, SHOWING_FILMS_COUNT);
 
     if (activeFilm) {
       return <MovieCard
         film={activeFilm}
-        films={films}
+        relativeFilms={relativeFilms}
         onFilmClick={this.filmClickHandler}
       />;
     }
@@ -52,7 +54,7 @@ class App extends PureComponent {
           <Route exact path="/dev-movie">
             <MovieCard
               film={this.props.films[0]}
-              films={this.props.films}
+              relativeFilms={this.props.films}
               onFilmClick={this.filmClickHandler}
             />
           </Route>
