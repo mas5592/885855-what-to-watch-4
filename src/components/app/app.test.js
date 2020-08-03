@@ -1,32 +1,32 @@
 import React from 'react';
-import rerender from 'react-test-renderer';
-import App from './app';
-import {promo, films, FILTER_ALL_GENRES} from '../../data.js';
+import renderer from 'react-test-renderer';
+import App from './app.jsx';
+import {films, FILTER_ALL_GENRES, LIMIT_FILMS_COUNT} from '../../data.js';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import Namespace from '../../reducer/namespace.js';
 
 const mockStore = configureStore([]);
 
-it(`Render App`, () => {
+it(`Should render App component`, () => {
   const store = mockStore({
-    currentGenre: FILTER_ALL_GENRES,
-    films,
+    [Namespace.DATA]: {
+      films,
+      promo: films[0]
+    },
+    [Namespace.STATE]: {
+      genre: FILTER_ALL_GENRES,
+      showedFilms: LIMIT_FILMS_COUNT
+    }
   });
 
-  const appComponent = rerender
+  const tree = renderer
     .create(
         <Provider store={store}>
-          <App
-            promo={promo}
-            films={films}
-          />
-        </Provider>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    ).toJSON();
+          <App loadComments={() => {}} />
+        </Provider>
+    )
+    .toJSON();
 
-  expect(appComponent).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-

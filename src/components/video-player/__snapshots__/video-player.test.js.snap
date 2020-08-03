@@ -1,9 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should VideoPlayer render correctly 1`] = `
+exports[`Should render VideoPlayer component 1`] = `
 <video
-  crossOrigin="anonymous"
-  height="175"
-  width="280"
-/>
+  autoPlay={true}
+  controls={true}
+  muted={true}
+  onClick={[Function]}
+  poster="https://poster-url.com"
+  width="100%"
+>
+  <source
+    src="https://video-url.com/1.mp4"
+  />
+</video>
 `;

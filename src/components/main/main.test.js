@@ -1,32 +1,35 @@
 import React from 'react';
+import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
-import rerender from 'react-test-renderer';
-import Main from './main.jsx';
-import {promo, films} from '../../data.js';
 import configureStore from 'redux-mock-store';
-import {FILTER_ALL_GENRES} from '../../data.js';
+import Main from './main.jsx';
+import {films, FILTER_ALL_GENRES, LIMIT_FILMS_COUNT} from '../../data.js';
+import Namespace from '../../reducer/namespace.js';
 
 const mockStore = configureStore([]);
 
 it(`Shold Main render correctly`, () => {
   const store = mockStore({
-    currentGenre: FILTER_ALL_GENRES,
-    films,
+    [Namespace.DATA]: {
+      films,
+      promo: films[0]
+    },
+    [Namespace.STATE]: {
+      genre: FILTER_ALL_GENRES,
+      showedFilms: LIMIT_FILMS_COUNT
+    }
   });
 
-  const tree = rerender
+  const tree = renderer
     .create(
         <Provider store={store}>
           <Main
-            promo={promo}
-            films={films}
-            onFilmClick={() => { }}
+            onFilmCardClick={() => {}}
+            promo={films[0]}
+            isVideoPlayerFull={false}
+            onVisibilityChange={() => {}}
           />
-        </Provider>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
+        </Provider>
     )
     .toJSON();
 

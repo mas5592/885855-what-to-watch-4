@@ -1,21 +1,20 @@
 import React from 'react';
-import rerender from 'react-test-renderer';
-import MovieCard from '../movie-card/movie-card.jsx';
-import {films} from '../../data.js';
+import renderer from 'react-test-renderer';
+import MovieCard from './movie-card.jsx';
+import {film} from '../../data.js';
 
-it(`Should MovieCard render correctly`, () => {
-  const tree = rerender
+it(`Should render MovieCard component`, () => {
+  const tree = renderer
     .create(
         <MovieCard
-          film={films[0]}
-          onFilmClick={() => { }}
-          relativeFilms={films}
-        />, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    ).toJSON();
+          film={film}
+          onFilmCardClick={() => {}}
+          onFilmCardMouseOver={() => {}}
+          onFilmCardMouseOut={() => {}}
+          isPlaying={true}
+        />
+    )
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
