@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MoviesList renders correctly 1`] = `
+exports[`Should render MoviesList component 1`] = `
 <div
   className="catalog__movies-list"
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
-      onClick={[Function]}
     >
-      <video
-        crossOrigin="anonymous"
+      <img
+        alt="Name"
         height="175"
+        src="https://poster-url.com"
         width="280"
       />
     </div>
@@ -25,26 +25,25 @@ exports[`MoviesList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
-        onClick={[Function]}
+        href="#"
       >
-        Aviator
+        Name
       </a>
     </h3>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
-      onClick={[Function]}
     >
-      <video
-        crossOrigin="anonymous"
+      <img
+        alt="Name"
         height="175"
+        src="https://poster-url.com"
         width="280"
       />
     </div>
@@ -53,10 +52,171 @@ exports[`MoviesList renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
-        onClick={[Function]}
+        href="#"
       >
-        The Grand Budapest Hotel
+        Name
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Name"
+        height="175"
+        src="https://poster-url.com"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Name
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Name"
+        height="175"
+        src="https://poster-url.com"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Name
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Name"
+        height="175"
+        src="https://poster-url.com"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Name
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Name"
+        height="175"
+        src="https://poster-url.com"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Name
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Name"
+        height="175"
+        src="https://poster-url.com"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Name
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Name"
+        height="175"
+        src="https://poster-url.com"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Name
       </a>
     </h3>
   </article>

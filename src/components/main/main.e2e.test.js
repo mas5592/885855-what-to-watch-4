@@ -1,10 +1,11 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import Main from './main.jsx';
-import {promo, films, FILTER_ALL_GENRES} from '../../data.js';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import configureStore from 'redux-mock-store';
+import {films, FILTER_ALL_GENRES, LIMIT_FILMS_COUNT} from '../../data.js';
+import Namespace from '../../reducer/namespace.js';
 
 const mockStore = configureStore([]);
 
@@ -12,28 +13,36 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-it(`Should title be clicked`, () => {
-  const onFilmClick = jest.fn();
+it(`Should card be pressed`, () => {
   const store = mockStore({
-    currentGenre: FILTER_ALL_GENRES,
-    films,
+    [Namespace.DATA]: {
+      films,
+      promo: films[0]
+    },
+    [Namespace.STATE]: {
+      genre: FILTER_ALL_GENRES,
+      showedFilms: LIMIT_FILMS_COUNT
+    }
   });
 
-  const main = shallow(
+  const filmClickHandler = jest.fn();
+
+  const main = mount(
       <Provider store={store}>
         <Main
-          promo={promo}
-          films={films}
-          onFilmClick={onFilmClick}
+          promo={films[0]}
+          onFilmCardClick={filmClickHandler}
+          isVideoPlayerFull={false}
+          onVisibilityChange={() => {}}
         />
       </Provider>
   );
 
-  const titleCount = main.find(`a.small-movie-card__link`);
+  const Card = main
+    .find(`article.small-movie-card.catalog__movies-card`)
+    .first();
 
-  titleCount.forEach((title) => {
-    title.props().onClick();
-  });
+  Card.props().onClick();
 
-  expect(onFilmClick.mock.calls.length).toBe(titleCount.length);
+  expect(filmClickHandler.mock.calls.length).toBe(1);
 });

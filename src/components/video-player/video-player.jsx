@@ -5,56 +5,72 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.videoRef = createRef();
+    this._videoRef = createRef();
+
+    this.state = {
+      isPlaying: false
+    };
+
+    this.handleVideoPlay = this.handleVideoPlay.bind(this);
+  }
+
+  handleVideoPlay() {
+    const video = this._videoRef.current;
+
+    if (video.paused) {
+      video.play();
+      this.setState({isPlaying: true});
+    } else {
+      video.pause();
+      this.setState({isPlaying: false});
+    }
   }
 
   componentDidMount() {
-    const {poster, src, isMuted} = this.props;
-    const video = this.videoRef.current;
-
-    if (isMuted) {
-      video.muted = true;
-    }
-
-    video.src = src;
-    video.poster = poster;
-  }
-
-  componentDidUpdate() {
-    const {isPlaying} = this.props;
-    const video = this.videoRef.current;
-
-    if (isPlaying) {
-      video.play();
-    } else {
-      video.load();
-    }
-  }
-
-  componentWillUnmount() {
-    const video = this.videoRef.current;
-
-    video.src = null;
-    video.poster = null;
+    this.setState({isPlaying: this.props.autoPlay});
   }
 
   render() {
+    const {film, muted, autoPlay} = this.props;
+
     return (
       <video
-        ref={this.videoRef}
-        width="280"
-        height="175"
-        crossOrigin="anonymous"
-      />
+        ref={this._videoRef}
+        muted={muted}
+        controls
+        poster={film.poster}
+        width="100%"
+        autoPlay={autoPlay}
+        onClick={this.handleVideoPlay}
+      >
+        <source src={film.trailerUrl} />
+      </video>
     );
   }
 }
 
 VideoPlayer.propTypes = {
-  poster: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  isMuted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
+  film: PropTypes.shape({
+    name: PropTypes.string,
+    poster: PropTypes.string,
+    previewUrl: PropTypes.string,
+    coverBackground: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    count: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.string,
+    genre: PropTypes.string,
+    releaseYear: PropTypes.number,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoUrl: PropTypes.string,
+    trailerUrl: PropTypes.string
+  }).isRequired,
+  muted: PropTypes.bool.isRequired,
+  autoPlay: PropTypes.bool.isRequired
 };
 
 export default VideoPlayer;

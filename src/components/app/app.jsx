@@ -1,45 +1,51 @@
 import React, {PureComponent} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
-import MovieCard from '../movie-card/movie-card.jsx';
+import MoviePage from '../movie-page/movie-page.jsx';
 import PropTypes from 'prop-types';
-import {SHOWING_FILMS_COUNT} from '../../data.js';
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeFilm: null
+      activeFilm: null,
+      isVideoPlayerFull: false
     };
-
     this.filmClickHandler = this.filmClickHandler.bind(this);
+    this.handleVisibility = this.handleVisibility.bind(this);
   }
 
-  filmClickHandler(film) {
+  filmClickHandler(activeFilm) {
+    this.setState({activeFilm});
+    this.props.loadComments(activeFilm.id);
+  }
+
+  handleVisibility() {
     this.setState({
-      activeFilm: film
+      isVideoPlayerFull: !this.state.isVideoPlayerFull
     });
   }
 
-  renderApp() {
-    const {promo, films} = this.props;
-    const {activeFilm} = this.state;
-    const relativeFilms = films.slice(0, SHOWING_FILMS_COUNT);
+  _renderApp() {
+    const {activeFilm, isVideoPlayerFull} = this.state;
 
-    if (activeFilm) {
-      return <MovieCard
-        film={activeFilm}
-        relativeFilms={relativeFilms}
-        onFilmClick={this.filmClickHandler}
-      />;
+    if (activeFilm !== null) {
+      return (
+        <MoviePage
+          film={activeFilm}
+          onFilmCardClick={this.filmClickHandler}
+          isVideoPlayerFull={isVideoPlayerFull}
+          onVisibilityChange={this.handleVisibility}
+        />
+      );
     }
 
     return (
       <Main
-        promo={promo}
-        films={films}
-        onFilmClick={this.filmClickHandler}
+        onFilmCardClick={this.filmClickHandler}
+        isVideoPlayerFull={isVideoPlayerFull}
+        onVisibilityChange={this.handleVisibility}
       />
     );
   }
@@ -49,14 +55,7 @@ class App extends PureComponent {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this.renderApp()}
-          </Route>
-          <Route exact path="/dev-movie">
-            <MovieCard
-              film={this.props.films[0]}
-              relativeFilms={this.props.films}
-              onFilmClick={this.filmClickHandler}
-            />
+            {this._renderApp()}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -65,12 +64,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  promo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
-  }).isRequired,
-  films: PropTypes.array.isRequired
+  loadComments: PropTypes.func.isRequired
 };
 
 export default App;

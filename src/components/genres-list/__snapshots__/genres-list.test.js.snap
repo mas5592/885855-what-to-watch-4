@@ -1,107 +1,250 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render genres list 1`] = `
-<ul
-  className="catalog__genres-list"
->
-  <li
-    className="catalog__genres-item catalog__genres-item--active"
+exports[`Should render GenresList component 1`] = `
+Array [
+  <ul
+    className="catalog__genres-list"
   >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
+    <li
+      className="catalog__genres-item catalog__genres-item--active"
     >
-      Comedy
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
+      <a
+        className="catalog__genres-link"
+        onClick={[Function]}
+      >
+        All genres
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item "
+    >
+      <a
+        className="catalog__genres-link"
+        onClick={[Function]}
+      >
+        Movie Genre
+      </a>
+    </li>
+  </ul>,
+  <div
+    className="catalog__movies-list"
   >
-    <a
-      className="catalog__genres-link"
-      href="#"
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Drama
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Sience
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Action
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Fantasy
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Thriller
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Romance
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Sci-Fi
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
       onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
-      Detective
-    </a>
-  </li>
-</ul>
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Name"
+          height="175"
+          src="https://poster-url.com"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="#"
+        >
+          Name
+        </a>
+      </h3>
+    </article>
+  </div>,
+]
 `;
