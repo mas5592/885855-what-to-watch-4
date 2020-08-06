@@ -1,27 +1,17 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import MovieNavTabs from './movie-nav-tabs.jsx';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import Namespace from '../../reducer/namespace.js';
-import {film} from '../../data.js';
+import React from "react";
+import renderer from "react-test-renderer";
+import MovieNavTabs from "./movie-nav-tabs.jsx";
 
-it(`Should render MovieNavTabs component`, () => {
-  const mockStore = configureStore([]);
+const Settings = {
+  currentTab: `overview`
+};
 
-  const store = mockStore({
-    [Namespace.DATA]: {
-      promo: film
-    }
-  });
-
+it(`Should MovieNavTabs render correctly`, () => {
   const tree = renderer
-    .create(
-        <Provider store={store}>
-          <MovieNavTabs film={film} />
-        </Provider>
-    )
-    .toJSON();
+    .create(<MovieNavTabs
+      onLinkClickHandler={() => {}}
+      currentTab={Settings.currentTab}
+    />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

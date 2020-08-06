@@ -1,31 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import reducer from './reducer/reducer.js';
+import reducer from './reducer/reducer';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {createAPI} from './api.js';
-import {Operation as DataOperation} from './reducer/data/data.js';
+import {createAPI} from './api';
+import {Operations as DataOperations} from './reducer/data/data';
+import {Operations as UserOperation, ActionCreator} from './reducer/user/user';
+import {AuthorizationStatus} from './const';
 
-const api = createAPI();
+const onUnauthorized = () => {
+  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+};
+
+const root = document.querySelector(`#root`);
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
-    composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
-store.dispatch(DataOperation.loadFilms());
-store.dispatch(DataOperation.loadPromo());
+store.dispatch(DataOperations.loadFilms());
+store.dispatch(DataOperations.loadPromo());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        loadComments={(filmId) =>
-          store.dispatch(DataOperation.loadComments(filmId))
-        }
-      />
+      <App />
     </Provider>,
-    document.querySelector(`#root`)
+    root
 );
+
