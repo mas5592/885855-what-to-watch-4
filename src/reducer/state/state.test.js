@@ -1,75 +1,52 @@
-import {reducer, ActionCreator, ActionType} from '../../reducer/state/state.js';
-import {FILTER_ALL_GENRES, LIMIT_FILMS_COUNT} from '../../data.js';
+import {reducer, initialState, ActionType} from './state';
+import {card, activeFilm} from '../../utils/test-data.js';
 
-const initialState = {
-  genre: FILTER_ALL_GENRES,
-  showedFilms: LIMIT_FILMS_COUNT
-};
-
-it(`Reducer without additional parameters should return initial state`, () => {
-  expect(reducer(undefined, {})).toEqual(initialState);
-});
-
-it(`Reducer should change genre`, () => {
-  expect(
-      reducer(
-          {genre: FILTER_ALL_GENRES},
-          {
-            type: ActionType.SET_CURRENT_GENRE,
-            payload: `Action`
-          }
-      )
-  ).toEqual({
-    genre: `Action`
+describe(`State Reducer`, () => {
+  it(`Reducer without additional parameters should return initial state`, () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  expect(
-      reducer(
-          {genre: FILTER_ALL_GENRES},
-          {
-            type: ActionType.SET_CURRENT_GENRE,
-            payload: `Comdey`
-          }
-      )
-  ).toEqual({genre: `Comdey`});
-});
-
-it(`Reducer should increase and reset showed films counter`, () => {
-  expect(
-      reducer(
-          {showedFilms: LIMIT_FILMS_COUNT},
-          {
-            type: ActionType.SET_MORE_FILMS
-          }
-      )
-  ).toEqual({
-    showedFilms: 16
-  });
-
-  expect(
-      reducer(
-          {showedFilms: 1},
-          {
-            type: ActionType.RESET_SHOWED_FILMS_AMOUNT
-          }
-      )
-  ).toEqual({
-    showedFilms: LIMIT_FILMS_COUNT
-  });
-});
-
-describe(`Action creators work correctly`, () => {
-  it(`Action creator for genre changing returns correct action`, () => {
-    expect(ActionCreator.changeGenre(`Action`)).toEqual({
+  it(`Should return the correct genre when it was changed`, () => {
+    expect(reducer({
+      activeGenre: `All genres`,
+    }, {
       type: ActionType.SET_CURRENT_GENRE,
-      payload: `Action`
+      payload: `Action`,
+    })).toEqual({
+      activeGenre: `Action`,
     });
   });
 
-  it(`Action creator for genre changing returns default genre if no genre provided`, () => {
-    expect(ActionCreator.changeGenre()).toEqual({
-      type: ActionType.SET_CURRENT_GENRE,
-      payload: FILTER_ALL_GENRES
+  it(`A new current film should return`, () => {
+    expect(reducer({
+      activeFilm: card,
+    }, {
+      type: ActionType.SET_CURRENT_FILM,
+      payload: activeFilm,
+    })).toEqual({
+      activeFilm,
+    });
+  });
+
+  it(`Must return true in the store when FilmPlayer is active`, () => {
+    expect(reducer({
+      isVideoPlayer: false,
+    }, {
+      type: ActionType.PLAY_FILM,
+      payload: true,
+    })).toEqual({
+      isVideoPlayer: true
+    });
+  });
+
+  it(`Must return false in storage when FilmPlayer is not active`, () => {
+    expect(reducer({
+      isVideoPlayer: true,
+    }, {
+      type: ActionType.STOP_FILM,
+      payload: false,
+    })).toEqual({
+      isVideoPlayer: false
     });
   });
 });

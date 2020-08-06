@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render MoviePage component 1`] = `
+exports[`MoviePage Should render MoviePage component 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
@@ -11,10 +11,7 @@ Array [
       <div
         className="movie-card__bg"
       >
-        <img
-          alt="Name"
-          src="https://image-url.com/1.jpg"
-        />
+        <img />
       </div>
       <h1
         className="visually-hidden"
@@ -29,6 +26,8 @@ Array [
         >
           <a
             className="logo__link"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -50,16 +49,21 @@ Array [
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            href="/mylist"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="img/avatar.jpg"
-              width="63"
-            />
-          </div>
+            <div
+              className="user-block__avatar"
+            >
+              <img
+                alt="Ivan"
+                height={63}
+                src="https://4.react.pages.academy/wtw/asda.jpg"
+                width={63}
+              />
+            </div>
+          </a>
         </div>
       </header>
       <div
@@ -70,35 +74,31 @@ Array [
         >
           <h2
             className="movie-card__title"
-          >
-            Name
-          </h2>
+          />
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
             >
-              Movie Genre
+              film Genre
             </span>
             <span
               className="movie-card__year"
-            >
-              2000
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/123456"
               onClick={[Function]}
-              type="button"
             >
               <svg
-                height={19}
+                height="19"
                 viewBox="0 0 19 19"
-                width={19}
+                width="19"
               >
                 <use
                   xlinkHref="#play-s"
@@ -107,9 +107,10 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -127,7 +128,8 @@ Array [
             </button>
             <a
               className="btn movie-card__button"
-              href="add-review.html"
+              href="/film/123456/review"
+              onClick={[Function]}
             >
               Add review
             </a>
@@ -145,100 +147,14 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Name"
             height={327}
-            src="https://poster-url.com"
             width={218}
           />
         </div>
         <div
           className="movie-card__desc"
         >
-          <nav
-            className="movie-nav movie-card__nav"
-          >
-            <ul
-              className="movie-nav__list"
-            >
-              <li
-                className="movie-nav__item movie-nav__item--active"
-              >
-                <a
-                  className="movie-nav__link"
-                  onClick={[Function]}
-                >
-                  Overview
-                </a>
-              </li>
-              <li
-                className="movie-nav__item "
-              >
-                <a
-                  className="movie-nav__link"
-                  onClick={[Function]}
-                >
-                  Details
-                </a>
-              </li>
-              <li
-                className="movie-nav__item "
-              >
-                <a
-                  className="movie-nav__link"
-                  onClick={[Function]}
-                >
-                  Reviews
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div
-            className="movie-rating"
-          >
-            <div
-              className="movie-rating__score"
-            >
-              8.9
-            </div>
-            <p
-              className="movie-rating__meta"
-            >
-              <span
-                className="movie-rating__level"
-              >
-                Very good
-              </span>
-              <span
-                className="movie-rating__count"
-              >
-                240
-                 ratings
-              </span>
-            </p>
-          </div>
-          <div
-            className="movie-card__text"
-          >
-            <p>
-              Movie description
-            </p>
-            <p
-              className="movie-card__director"
-            >
-              <strong>
-                Director: 
-                Director Name
-              </strong>
-            </p>
-            <p
-              className="movie-card__starring"
-            >
-              <strong>
-                Starring: 
-                Actor 1, Actor 2, Actor 3 and other
-              </strong>
-            </p>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -256,7 +172,11 @@ Array [
       </h2>
       <div
         className="catalog__movies-list"
-      />
+      >
+        <div
+          className="catalog__movies-list"
+        />
+      </div>
     </section>
     <footer
       className="page-footer"
@@ -266,6 +186,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -293,6 +215,5 @@ Array [
       </div>
     </footer>
   </div>,
-  ")",
 ]
 `;

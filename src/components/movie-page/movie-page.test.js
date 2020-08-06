@@ -2,37 +2,59 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MoviePage from './movie-page.jsx';
 import configureStore from 'redux-mock-store';
-import Namespace from '../../reducer/namespace.js';
+import NameSpace from '../../reducer/name-space';
 import {Provider} from 'react-redux';
-import {films, FILTER_ALL_GENRES, LIMIT_FILMS_COUNT} from '../../data.js';
+import {films, card} from '../../utils/test-data.js';
+import {adaptFilm, adaptFilms} from '../../adapters/film.js';
+import {Router} from 'react-router-dom';
+import history from '../../history';
+import {AVATAR_URL, AuthorizationStatus} from '../../const.js';
 
-it(`Should render MoviePage component`, () => {
-  const mockStore = configureStore([]);
+const mockStore = configureStore([]);
 
-  const store = mockStore({
-    [Namespace.DATA]: {
-      films,
-      promo: films[0]
-    },
-    [Namespace.STATE]: {
-      genre: FILTER_ALL_GENRES,
-      showedFilms: LIMIT_FILMS_COUNT
-    }
+describe(`MoviePage`, () => {
+  it(`Should render MoviePage component`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {
+        films: adaptFilms(films)
+      },
+      [NameSpace.STATE]: {
+        activeFilm: adaptFilm(card)
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
+        userInfo: {
+          id: 1,
+          email: `ivan@dmail.ru`,
+          name: `Ivan`,
+          avatarUrl: AVATAR_URL,
+        },
+      },
+    });
+
+    store.dispatch = jest.fn();
+
+    const tree = renderer
+      .create(
+          <Router history={history}>
+            <Provider store={store}>
+              <MoviePage
+                activeFilm={adaptFilm(card)}
+                renderMovieNavTabs={() => {}}
+                activeTab={``}
+                loadFilmInformation={() => {}}
+                routeProps={{match: {params: {id: 167456}, isExact: true, path: ``, url: ``}}}
+              />
+            </Provider>
+          </Router>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
-
-  const tree = renderer
-    .create(
-        <Provider store={store}>
-          <MoviePage
-            film={films[0]}
-            onFilmCardClick={() => {}}
-            isVideoPlayerFull={false}
-            onVisibilityChange={() => {}}
-            films={films}
-          />
-        </Provider>
-    )
-    .toJSON();
-
-  expect(tree).toMatchSnapshot();
 });
+
+
