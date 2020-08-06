@@ -1,27 +1,47 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+import NameSpace from '../../reducer/name-space';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
+import {films} from '../../utils/test-data.js';
 import VideoPlayerFull from './video-player-full.jsx';
-import {films} from '../../data.js';
+import {PageNames} from '../../const.js';
 
-it(`Should render VideoPlayerFull component`, () => {
-  const tree = renderer
-    .create(
-        <VideoPlayerFull
-          film={films[0]}
-          autoPlay={false}
-          muted={true}
-          isPlaying={false}
-          getElapsedTime={() => {}}
-          getPlaybackProgress={() => {}}
-          onPlayButtonClick={() => {}}
-          onFullscreenButtonClick={() => {}}
-          onExitButtonClick={() => {}}
-          onLoadedMetadata={() => {}}
-          onTimeUpdate={() => {}}
-          videoRef={React.createRef()}
-        />
-    )
-    .toJSON();
+const film = films[0];
+const mockStore = configureStore([]);
 
-  expect(tree).toMatchSnapshot();
+describe(`VideoPlayerFull`, () => {
+  const store = mockStore({
+    [NameSpace.STATE]: {
+      currentPage: PageNames.MAIN,
+    },
+  });
+
+  it(`Render VideoPlayerFull`, () => {
+    const tree = renderer.create(
+        <Router history={history}>
+          <Provider store={store}>
+            <VideoPlayerFull
+              currentTime={20}
+              duration={100}
+              card={film}
+              isPlaying={true}
+              leftTime={`00:10:12`}
+              onClosePlayerClick={() => {}}
+              onIsPlayingChange={() => {}}
+              onSetFullScreen={() => {}}
+            ><video/>
+            </VideoPlayerFull>
+          </Provider>
+        </Router>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

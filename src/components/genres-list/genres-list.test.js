@@ -1,22 +1,25 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {GenresList} from './genres-list.jsx';
-import {films, FILTER_ALL_GENRES, LIMIT_FILMS_COUNT} from '../../data.js';
+import {GenresList} from './genres-list';
+import {films} from '../../utils/test-data';
 
-it(`Should render GenresList component`, () => {
-  const tree = renderer
-    .create(
-        <GenresList
-          films={films}
-          genre={FILTER_ALL_GENRES}
-          changeGenre={() => {}}
-          onFilmCardClick={() => {}}
-          showedFilms={LIMIT_FILMS_COUNT}
-          resetShowedFilmsAmount={() => {}}
-          filteredFilms={films}
-        />
-    )
-    .toJSON();
+const Settings = {
+  activeFilter: `Action`,
+  genres: [`All genres`].concat(Array.from(new Set(films.map((film) => film.genre))))
+};
 
-  expect(tree).toMatchSnapshot();
+describe(`GenresList`, () => {
+  it(`Should render GenresList component`, () => {
+    const tree = renderer
+      .create(
+          <GenresList
+            genres={Settings.genres}
+            currentActiveGenre={Settings.activeFilter}
+            onGenreClick={() => {}}
+          />
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

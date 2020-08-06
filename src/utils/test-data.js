@@ -1,0 +1,113 @@
+export const card = {
+  title: `Name`,
+  genre: `film Genre`,
+  date: 1993,
+  coverBackground: `img/bg-the-grand-budapest-hotel.jpg`,
+  poster: `img/the-grand-budapest-hotel-poster.jpg`,
+  picture: `img/snatch.jpg`,
+  id: 123456,
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege`,
+  rating: 8.9,
+  ratingDescription: `Very good`,
+  scores: 240,
+  director: `Director Name`,
+  starring: [`Author`],
+  preview: `https://upload.wikimedia.org/wikipedia/commons/7/72/Landwasserviadukt%2C_aerial_video.webm`,
+  filmDurationTime: 107,
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+  isFavorite: false,
+  backgroundColor: `#FFFFFF`,
+};
+
+export const films = [
+  {
+    title: `Snatch`,
+    genre: `Genre`,
+    date: 2014,
+    coverBackground: `https://placeimg.com/1300/512/nature`,
+    poster: `img/snatch.jpg`,
+    picture: `img/snatch.jpg`,
+    id: 123465,
+    description: `film description.`,
+    rating: 8.3,
+    scores: 1500,
+    director: `Director Name`,
+    starring: [`Author`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+    filmDurationTime: 107,
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+    isFavorite: false,
+    backgroundColor: `#FFFFFF`,
+  }, {
+    title: `Snatch`,
+    genre: `Genre`,
+    date: 2014,
+    coverBackground: `https://placeimg.com/1300/512/nature`,
+    poster: `img/snatch.jpg`,
+    picture: `img/snatch.jpg`,
+    id: 123478,
+    description: `film description.`,
+    rating: 8.3,
+    scores: 1500,
+    director: `Director Name`,
+    starring: [`Author`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+    filmDurationTime: 107,
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+    isFavorite: false,
+    backgroundColor: `#FFFFFF`,
+  }
+];
+
+export const activeFilm = {
+  title: `Snatch`,
+  genre: `Genre`,
+  date: 2014,
+  coverBackground: `https://placeimg.com/1300/512/nature`,
+  poster: `img/snatch.jpg`,
+  picture: `img/snatch.jpg`,
+  id: 123891,
+  description: `film description.`,
+  rating: 8.3,
+  scores: 1500,
+  director: `Director Name`,
+  starring: [`Author`],
+  preview: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+  filmDurationTime: 107,
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+  isFavorite: false,
+  backgroundColor: `#FFFFFF`,
+};
+
+export const filmReviews = [{
+  id: 1234567891,
+  user: {
+    id: 1223,
+    title: `Ivan Ivanov`,
+  },
+  rating: 8.0,
+  comment: `My comment`,
+  date: `2020-07-09T10:12:45.467Z`,
+},
+{
+  id: 1234567891,
+  user: {
+    id: 1223,
+    title: `Ivan Ivanov`,
+  },
+  rating: 8.0,
+  comment: `My comment`,
+  date: `2020-07-09T10:12:45.467Z`,
+},
+{
+  id: 1234567891,
+  user: {
+    id: 1223,
+    title: `Ivan Ivanov`,
+  },
+  rating: 8.0,
+  comment: `My comment`,
+  date: `2020-07-09T10:12:45.467Z`,
+}];
+
+export const genres = [`All genres`, `Drama`, `Thriller`, `Comedy`];

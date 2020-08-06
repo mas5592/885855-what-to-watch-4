@@ -1,26 +1,45 @@
-import React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import React from "react";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import VideoPlayer from './video-player.jsx';
-import {film} from '../../data.js';
+import {card} from '../../utils/test-data.js';
 
 Enzyme.configure({
-  adapter: new Adapter()
+  adapter: new Adapter(),
 });
 
-it(`Should play video on click`, () => {
-  const fakePlay = jest
-    .spyOn(window.HTMLMediaElement.prototype, `play`)
-    .mockImplementation(() => {});
+describe(`Test VideoPlayer component`, () => {
 
-  const videoPlayer = mount(
-      <VideoPlayer film={film} muted={true} autoPlay={false} />
-  );
+  it(`VideoPlayer has play state`, () => {
+    const isPlaying = false;
 
-  expect(videoPlayer.state(`isPlaying`)).toBe(false);
-  videoPlayer.simulate(`click`);
-  expect(videoPlayer.state(`isPlaying`)).toBe(true);
+    const videoComponent = mount(
+        <VideoPlayer
+          film={card}
+          source={card.preview}
+          poster={card.poster}
+          isPlaying={isPlaying}
+          muted
+        />
+    );
 
-  expect(fakePlay).toHaveBeenCalled();
-  fakePlay.mockRestore();
+    expect(videoComponent.props().isPlaying).toBe(isPlaying);
+  });
+
+  it(`VideoPlayer has pause state`, () => {
+    const isPlaying = true;
+
+    const videoComponent = mount(
+        <VideoPlayer
+          film={card}
+          source={card.preview}
+          poster={card.poster}
+          isPlaying={isPlaying}
+          muted
+        />
+    );
+
+    expect(videoComponent.props().isPlaying).toBe(isPlaying);
+  });
+
 });

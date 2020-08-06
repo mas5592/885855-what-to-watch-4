@@ -1,37 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render MovieCard component 1`] = `
+exports[`MovieCard Should render correctly film card 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onClick={[Function]}
-  onMouseOut={[Function]}
-  onMouseOver={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
-  <div
-    className="small-movie-card__image"
+  <a
+    className="small-movie-card__link"
+    href="/film/123456"
+    onClick={[Function]}
   >
-    <video
-      autoPlay={true}
-      controls={true}
-      muted={true}
-      onClick={[Function]}
-      poster="https://poster-url.com"
-      width="100%"
+    <div
+      className="small-movie-card__image"
     >
-      <source
-        src="https://video-url.com/1.mp4"
+      <video
+        className="player__video"
       />
-    </video>
-  </div>
-  <h3
-    className="small-movie-card__title"
-  >
-    <a
-      className="small-movie-card__link"
-      href="#"
+      <img
+        height={175}
+        src="img/the-grand-budapest-hotel-poster.jpg"
+        width={280}
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
     >
       Name
-    </a>
-  </h3>
+    </h3>
+  </a>
 </article>
 `;
