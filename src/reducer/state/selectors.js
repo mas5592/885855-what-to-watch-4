@@ -6,7 +6,7 @@ export const getActiveFilm = (state) => state[NameSpace.STATE].activeFilm;
 export const getActiveFilmById = (state, ownProps) => {
   const films = getFilms(state);
   const filmId = parseInt(ownProps.routeProps.match.params.id, 10);
-  const [activeFilm] = films.find((film) => film.id === filmId);
+  const [activeFilm] = films.filter((film) => film.id === filmId);
 
   return activeFilm;
 };
