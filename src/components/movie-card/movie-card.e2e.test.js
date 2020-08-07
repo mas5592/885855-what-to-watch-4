@@ -2,30 +2,51 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import MovieCard from './movie-card.jsx';
-import {film} from '../../data.js';
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import NameSpace from '../../reducer/name-space';
+import {card, films, filmReviews} from '../../utils/test-data.js';
+
+const mockStore = configureStore([]);
 
 Enzyme.configure({
-  adapter: new Adapter()
+  adapter: new Adapter(),
 });
 
-it(`Should pass data to handler on hover`, () => {
-  const filmCardMouseOverHandler = jest.fn();
-  const filmCardMouseOutHandler = jest.fn();
+describe(`MovieCard e2e tests`, () => {
+  it(`MovieCard be clicked`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {
+        card,
+        films,
+        filmReviews
+      },
+    });
+    const handleFilmClick = jest.fn();
 
-  const card = shallow(
-      <MovieCard
-        film={film}
-        isPlaying={true}
-        onFilmCardClick={() => {}}
-        onFilmCardMouseOver={() => filmCardMouseOverHandler(film)}
-        onFilmCardMouseOut={filmCardMouseOutHandler}
-      />
-  );
+    const mainComponent = shallow(
+        <Provider store={store}>
+          <MovieCard
+            film={card}
+            onMovieCardClick={handleFilmClick}
+            onMovieCardMouseEnter={() => {}}
+            onMovieCardMouseOut={() => {}} />
+        </Provider>
+    );
+    const cards = mainComponent.find(`.small-movie-card`);
 
-  card.simulate(`mouseover`);
-  card.simulate(`mouseout`);
+    cards.forEach((film) => {
+      const title = film.find(`.small-movie-card__title`);
+      title.simulate(`click`, {
+        preventDefault: handleFilmClick,
+      });
 
-  expect(filmCardMouseOverHandler.mock.calls.length).toBe(1);
-  expect(filmCardMouseOverHandler.mock.calls[0][0]).toMatchObject(film);
-  expect(filmCardMouseOutHandler.mock.calls.length).toBe(1);
+      const image = film.find(`.small-movie-card__image`);
+      image.simulate(`click`, {
+        preventDefault: handleFilmClick,
+      });
+    });
+
+    expect(handleFilmClick).toEqual(handleFilmClick);
+  });
 });

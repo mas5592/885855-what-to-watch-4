@@ -1,76 +1,57 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
+import {CustomPropTypes} from '../../utils/props.js';
 
-class VideoPlayer extends PureComponent {
+export default class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._videoRef = createRef();
+    this._video = createRef();
 
-    this.state = {
-      isPlaying: false
-    };
-
-    this.handleVideoPlay = this.handleVideoPlay.bind(this);
-  }
-
-  handleVideoPlay() {
-    const video = this._videoRef.current;
-
-    if (video.paused) {
-      video.play();
-      this.setState({isPlaying: true});
-    } else {
-      video.pause();
-      this.setState({isPlaying: false});
-    }
+    this._videoPlayerSetTimeout = null;
   }
 
   componentDidMount() {
-    this.setState({isPlaying: this.props.autoPlay});
+    const {film} = this.props;
+    const {videoPreview, poster} = film;
+    const video = this._video.current;
+
+    video.src = videoPreview;
+    video.poster = poster;
+    video.muted = true;
+  }
+
+  componentWillUnmount() {
+    const video = this._video.current;
+
+    video.onplay = null;
+    video.src = ``;
+    video.poster = ``;
+    video.muted = null;
   }
 
   render() {
-    const {film, muted, autoPlay} = this.props;
-
     return (
       <video
-        ref={this._videoRef}
-        muted={muted}
-        controls
-        poster={film.poster}
-        width="100%"
-        autoPlay={autoPlay}
-        onClick={this.handleVideoPlay}
-      >
-        <source src={film.trailerUrl} />
-      </video>
+        className="player__video"
+        ref={this._video}
+      />
     );
+  }
+
+  componentDidUpdate() {
+    const {isPlaying} = this.props;
+    const video = this._video.current;
+
+    if (isPlaying) {
+      video.play();
+    } else {
+      video.load();
+    }
   }
 }
 
 VideoPlayer.propTypes = {
-  film: PropTypes.shape({
-    name: PropTypes.string,
-    poster: PropTypes.string,
-    previewUrl: PropTypes.string,
-    coverBackground: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    count: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }).isRequired,
-  muted: PropTypes.bool.isRequired,
-  autoPlay: PropTypes.bool.isRequired
+  film: CustomPropTypes.FILM,
+  isPlaying: PropTypes.bool
 };
-
-export default VideoPlayer;

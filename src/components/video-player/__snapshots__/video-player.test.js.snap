@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render VideoPlayer component 1`] = `
+exports[`VideoPlayer Should render VideoPlayer component 1`] = `
 <video
-  autoPlay={true}
-  controls={true}
-  muted={true}
-  onClick={[Function]}
-  poster="https://poster-url.com"
-  width="100%"
->
-  <source
-    src="https://video-url.com/1.mp4"
-  />
-</video>
+  className="player__video"
+/>
 `;
