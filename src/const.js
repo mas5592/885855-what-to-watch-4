@@ -23,7 +23,7 @@ export const PageNames = {
 export const AppRoute = {
   LOGIN: `/login`,
   ROOT: `/`,
-  PAGE: `/film`,
+  PAGE: `/films`,
   FILM_REVIEW: `/review`,
   MY_LIST: `/mylist`,
   VIDEO_PLAYER: `/player`,
@@ -38,9 +38,9 @@ export const RatingLevel = {
 };
 
 export const ListFilters = {
-  OVERVIEW: `overview`,
-  DETAILS: `details`,
-  REVIEWS: `reviews`
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
 };
 
 export const Time = {
@@ -58,33 +58,7 @@ export const ReviewLength = {
   MAX: 400,
 };
 
-export const reviewSubmitButton = {
+export const reviewSubmitBtn = {
   post: `Post`,
   sending: `Sending...`,
-};
-
-export const emptyFilm = {
-  title: `Loading...`,
-  genre: ``,
-  date: 0,
-  coverBackground: ``,
-  poster: ``,
-  id: 0,
-  description: ``,
-  rating: 0,
-  votes: 0,
-  director: ``,
-  starring: [],
-  runTime: 0,
-  preview: ``,
-  videoLink: ``,
-  isFavorite: false,
-  backgroundColor: ``,
-};
-
-export const activeGenre = `Drama`;
-
-export const FormatDate = {
-  DATA: `MMMM D, YYYY`,
-  DATA_TO_ISO: `YYYY-MM-DD`,
 };
